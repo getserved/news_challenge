@@ -16,7 +16,7 @@ function App() {
         const thumbnailId:string = thumbnails[0]
         ref = story.references[thumbnailId]
       }
-        
+      console.log(ref?.link?.media)
       return {
         id: story.id,
         headline: story.headline.default,
@@ -28,9 +28,7 @@ function App() {
     })
   }
 
-  const stories = transformStories(results)
-
-  console.log(data)
+  const stories = transformStories(results.slice(30,40))
 
   return (
     <div className="App">
