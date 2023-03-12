@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import $ from './News.module.css';
-import data from "../../data/capi.json"
+import axios from 'axios';
 import StoryBrief from '../StoryBrief/StoryBrief';
 import Pagination from '../Pagination/Pagination';
 import { useParams } from 'react-router-dom';
@@ -8,60 +8,75 @@ import { Story } from '../../types';
 
 function News() {
 
-  const { results } = data
+    const [results, setResults] = useState([]);
 
-  const numberPerPage = 9
+    useEffect(() => {
+        const fetchData = async (): Promise<unknown[]> => {
+            try{
+                const response =  await axios.get("/data/capi.json")
+                setResults(response.data.results)
+                return response.data.results
+            } catch (err) {
+                console.log(err)
+                return []
+            }
+        }
 
-  const { page = "1" } = useParams();
+        fetchData()
+    }, []);
 
-  const currentPage = parseInt(page)
+    const numberPerPage = 9
 
-  const transformStories = (stories: any[]) => {
-    return stories.map(story => {
-      const thumbnails = story.related?.thumbnail?.default as string[]
-      let ref;
-      if (thumbnails && thumbnails.length > 0) {
-        const thumbnailId:string = thumbnails[0]
-        ref = story.references[thumbnailId]
-      }
-    
-      return {
-        id: story.id,
-        headline: story.headline.default,
-        standfirst: story.standfirst.default,
-        date: story.date,
-        thumbnail: ref?.link?.media,
-        link: story.link
-      } as Story
-    })
-  }
+    const { page = "1" } = useParams();
 
-  const stories = useMemo(() => {
-    return transformStories(results)
-  }, [results])
+    const currentPage = parseInt(page)
 
-  const filteredStories = currentPage > 0 && stories.slice((currentPage - 1) * numberPerPage, currentPage * numberPerPage)
+    const transformStories = (stories: any[]) => {
+        return stories.map(story => {
+        const thumbnails = story.related?.thumbnail?.default as string[]
+        let ref;
+        if (thumbnails && thumbnails.length > 0) {
+            const thumbnailId:string = thumbnails[0]
+            ref = story.references[thumbnailId]
+        }
+        
+        return {
+            id: story.id,
+            headline: story.headline.default,
+            standfirst: story.standfirst.default,
+            date: story.date,
+            thumbnail: ref?.link?.media,
+            link: story.link
+        } as Story
+        })
+    }
 
-  return (
-    <div className={$.news}>
-        <div className={$.container}>
-            <div className={$.content}>
-                {filteredStories && filteredStories.map(story => {
-                    return (
-                        <div className={$.story} key={story.id}>
-                            <StoryBrief story={story}/>
-                        </div>
-                    )
-                })}
-            </div>
-            <div className={$.pagination}>
-            <Pagination totalNumber={results.length} numberPerPage={numberPerPage} currentPage={currentPage}/>
-            </div>
-            
-      </div>
-      
-    </div>
-  );
+    const stories = useMemo(() => {
+        return transformStories(results)
+    }, [results])
+
+    const filteredStories = currentPage > 0 && stories.slice((currentPage - 1) * numberPerPage, currentPage * numberPerPage)
+
+    return (
+        <div className={$.news}>
+            <div className={$.container}>
+                <div className={$.content}>
+                    {filteredStories && filteredStories.map(story => {
+                        return (
+                            <div className={$.story} key={story.id}>
+                                <StoryBrief story={story}/>
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className={$.pagination}>
+                <Pagination totalNumber={results.length} numberPerPage={numberPerPage} currentPage={currentPage}/>
+                </div>
+                
+        </div>
+        
+        </div>
+    );
 }
 
 export default News;
