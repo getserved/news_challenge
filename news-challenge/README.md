@@ -15,6 +15,7 @@ This is accomplished based on React
 - [✔] Responsive design and implementation on different screens
 - [✔] Predefine global variables
 - [✔] Module Css for components
+- [✔] Both Flex and Grid-system for layout (Only for demostration purpose, in real project I will use consistent layout)
 
 ### React
 - [✔] Use Function Components and Hooks
