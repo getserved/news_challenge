@@ -1,8 +1,16 @@
 import { screen, render } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import Layout from '../Layout/Layout'
+import '@testing-library/jest-dom';
+import { MemoryRouter } from 'react-router-dom';
+import Layout from './Layout'
 
-test('Layout rendering', async () => {
-  render(<Layout>test</Layout>)
-  expect(screen.getByText(/test/i)).toBeInTheDocument()
-})
+describe('Layout component', () => {
+  it('renders the title', () => {
+    render(
+      <MemoryRouter>
+        <Layout>test</Layout>
+      </MemoryRouter>  
+    );
+    expect(screen.getByText('test')).toBeInTheDocument()
+  });
+
+});
