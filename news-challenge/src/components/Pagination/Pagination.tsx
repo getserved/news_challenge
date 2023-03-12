@@ -15,8 +15,11 @@ const Pagination: FC<PaginationProps> = ({
     shownPageNum = 3,
     currentPage = 1,
  }) => {
+
+    // get current pathname
     const {pathname} = useLocation()
 
+    // get totalPages by calculating
     const totalPages = Math.ceil(totalNumber / numberPerPage)
 
     // return shown pagers

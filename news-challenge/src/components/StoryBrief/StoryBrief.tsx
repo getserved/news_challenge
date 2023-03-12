@@ -11,13 +11,16 @@ interface StoryProps {
   
 const StoryBrief: FC<StoryProps> = ({ story, className }) => {
 
+    // set state for imgError
     const [imgError, setImgError] = useState<boolean>(false)
 
+    // when image fetching failed, set imgError to true
     const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
         e.preventDefault()
         setImgError(true)
     }
 
+    // cache memo for createdAt
     const createdAt = useMemo(() => {
         return new Date(story.date.created).toLocaleDateString(undefined, {
             year: 'numeric',

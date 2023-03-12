@@ -10,6 +10,7 @@ function News() {
 
     const [results, setResults] = useState([]);
 
+    // onMount fetchData
     useEffect(() => {
         const fetchData = async (): Promise<unknown[]> => {
             try{
