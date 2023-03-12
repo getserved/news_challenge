@@ -27,26 +27,23 @@ const StoryBrief: FC<StoryProps> = ({ story }) => {
 
     return (
         <React.Fragment>
-            <Link className={$.link} to={story.link.canonical} target="_blank">
-                <div className={$.container}>
-                    <div className={$.story}>
-                        <div className={$.thumbnail}>
-                            {imgError && <img alt={story.headline} src={require("../../images/placeholder.jpg")} width="100"/>}
-                            {!imgError && <img alt={story.headline} src={story.thumbnail} onError={handleImageError}/>}
-                            <div className={$.date}>
-                                created at {createdAt}
-                            </div>
+            <article className={$.story}>
+                <h3 className={$.headline}>
+                    <Link className={$.link} to={story.link.canonical} target="_blank">
+                        {story.headline}
+                    </Link>
+                </h3>
+                <div className={$.thumbnail}>
+                    <Link className={$.link} to={story.link.canonical} target="_blank">
+                        {imgError && <img className={$.thumbnailImg} alt={story.headline} src={require("../../images/placeholder.jpg")} width="100"/>}
+                        {!imgError && <img className={$.thumbnailImg} alt={story.headline} src={story.thumbnail} onError={handleImageError}/>}
+                        <div className={$.date}>
+                            created at {createdAt}
                         </div>
-                        <div className={$.content}>
-                            <h3 className={$.headline}>
-                                {story.headline}
-                            </h3>
-                            <div dangerouslySetInnerHTML={{ __html: story.standfirst }} className={$.standfirst}>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Link>
+                    </Link>
+                </div>   
+                <div dangerouslySetInnerHTML={{ __html: story.standfirst }} className={$.standfirst} />
+            </article>
         </React.Fragment>
     )
 };

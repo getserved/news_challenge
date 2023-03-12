@@ -3,8 +3,52 @@
     --text-color: var(--brand-color);
     --border-color: #eaebec;
     --border: 1px solid var(--border-color);
+    --header-height-md: 60px;
+    --header-height-sm: 40px;
+    --h1-md: 40px;
+    --h2-md: 32px;
+    --h3-md: 24px;
+    --h4-md: 20px;
+    --h1-sm: 24px;
+    --h2-sm: 20px;
+    --h3-sm: 18px;
+    --h4-sm: 16px;
 }
 
-h1,h2,h3,h4,div,p {
+h1,h2,h3,h4,div,a,p {
     color: var(--text-color)
+}
+
+h1 {
+    font-size: var(--h1-md);
+}
+
+h2 {
+    font-size: var(--h2-md);
+}
+
+h3 {
+    font-size: var(--h3-md);
+}
+
+h4 {
+    font-size: var(--h4-md);
+}
+
+@media screen and (max-width: 640px) {
+    h1 {
+        font-size: var(--h1-sm);
+    }
+
+    h2 {
+        font-size: var(--h2-sm);
+    }
+
+    h3 {
+        font-size: var(--h3-sm);
+    }
+
+    h4 {
+        font-size: var(--h4-sm);
+    }
 }

@@ -1,9 +1,14 @@
 import React from 'react';
 
 import NewsComponent from "../components/News/News"
+import Layout from "../components/Layout/Layout"
 
 function News() {
-  return (<NewsComponent />);
+  return (
+    <Layout>
+        <NewsComponent />
+    </Layout>
+  );
 }
 
 export default News;

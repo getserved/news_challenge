@@ -1,0 +1,29 @@
+.header {
+  background-color: white;
+  height: var(--header-height-md);
+  text-align: center;
+  padding: 0.5rem;
+  display: flex;
+  border-bottom: var(--border);
+}
+
+.link {
+  box-sizing: border-box;
+  flex: 1 1 0%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  height: 100%;
+  margin:auto;
+}
+
+@media screen and (max-width: 640px) {
+  .header {
+    font-size: var(--font-sm);
+    height: var(--header-height-sm);
+  }
+}
