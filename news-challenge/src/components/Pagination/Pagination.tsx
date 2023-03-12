@@ -16,6 +16,8 @@ const Pagination: FC<PaginationProps> = ({
  }) => {
     const {pathname} = useLocation()
 
+    console.log('numberPerPage', numberPerPage)
+
     const totalPages = Math.ceil(totalNumber / numberPerPage)
 
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);

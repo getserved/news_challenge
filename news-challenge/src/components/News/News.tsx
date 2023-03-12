@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import $ from './News.module.css';
 import data from "../../data/capi.json"
 import StoryBrief from '../StoryBrief/StoryBrief';
@@ -10,7 +10,7 @@ function News() {
 
   const { results } = data
 
-  const numberPerPage = 10
+  const numberPerPage = 9
 
   const { page = "1" } = useParams();
 
@@ -45,15 +45,21 @@ function News() {
   return (
     <div className={$.news}>
         <div className={$.container}>
-            {filteredStories && filteredStories.map(story => {
-            return (
-                <React.Fragment key={story.id}>
-                <StoryBrief story={story}/>
-                </React.Fragment>
-            )
-            })}
-        <Pagination totalNumber={results.length} currentPage={currentPage}/>
+            <div className={$.content}>
+                {filteredStories && filteredStories.map(story => {
+                    return (
+                        <div className={$.story} key={story.id}>
+                            <StoryBrief story={story}/>
+                        </div>
+                    )
+                })}
+            </div>
+            <div className={$.pagination}>
+            <Pagination totalNumber={results.length} numberPerPage={numberPerPage} currentPage={currentPage}/>
+            </div>
+            
       </div>
+      
     </div>
   );
 }

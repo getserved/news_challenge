@@ -1,0 +1,40 @@
+.link {
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+}
+
+.container {
+    
+}
+
+.story {
+    flex:1 1 50%;
+}
+
+.content {
+    padding: 0.5rem;
+    padding-bottom: 1rem;
+    max-height: 10rem;
+    overflow: hidden;
+}
+
+.thumbnail img{
+    width: 100%;
+}
+
+.headline {
+    margin: 0 0;
+    font-size: 16px;
+}
+
+.date {
+    text-align: right;
+    margin-right:0.25rem;
+    font-size: 12px;
+}
+
+.standfirst {
+    font-size: 14px;
+}
+

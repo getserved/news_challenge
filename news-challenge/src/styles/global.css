@@ -1,3 +1,10 @@
 :root {
-    --brand-color: #123456
+    --brand-color: #202223;
+    --text-color: var(--brand-color);
+    --border-color: #eaebec;
+    --border: 1px solid var(--border-color);
+}
+
+h1,h2,h3,h4,div,p {
+    color: var(--text-color)
 }
