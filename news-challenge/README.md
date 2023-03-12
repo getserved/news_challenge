@@ -23,6 +23,7 @@ This is accomplished based on React
 - [✔] conditional classNames
 - [✔] Typescript supportive
 - [✔] Possible to set Image srcset or images for differenct breakpoints or 'next/image' if needed
+- [✔] Aria attribuites and web-accessbilities could be added
 
 ### Api
 - [✔] Fetch local data by axios
