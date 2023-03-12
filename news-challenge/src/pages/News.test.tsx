@@ -3,8 +3,6 @@ import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
 import News from './News'
 
-const date = new Date()
-
 describe('News component', () => {
   it('renders the News with init state', () => {
     const {container} = render(

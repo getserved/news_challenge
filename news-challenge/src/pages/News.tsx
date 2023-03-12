@@ -1,5 +1,3 @@
-import React from 'react';
-
 import NewsComponent from "../components/News/News"
 import Layout from "../components/Layout/Layout"
 
