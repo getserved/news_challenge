@@ -63,9 +63,7 @@ function News() {
                 <div className={$.content}>
                     {filteredStories && filteredStories.map(story => {
                         return (
-                            <div className={$.story} key={story.id}>
-                                <StoryBrief story={story}/>
-                            </div>
+                            <StoryBrief className={$.story} key={story.id} story={story}/>
                         )
                     })}
                 </div>

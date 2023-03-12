@@ -4,11 +4,12 @@ import $ from "./StoryBrief.module.css"
 import { Link } from 'react-router-dom';
 
 interface StoryProps {
-    story: Story
+    story: Story,
+    className?: string
 }
 
   
-const StoryBrief: FC<StoryProps> = ({ story }) => {
+const StoryBrief: FC<StoryProps> = ({ story, className }) => {
 
     const [imgError, setImgError] = useState<boolean>(false)
 
@@ -27,7 +28,7 @@ const StoryBrief: FC<StoryProps> = ({ story }) => {
 
     return (
         <React.Fragment>
-            <article className={$.story}>
+            <article className={`${className} ${$.story}`}>
                 <h3 className={$.headline}>
                     <Link className={$.link} to={story.link.canonical} target="_blank">
                         {story.headline}
