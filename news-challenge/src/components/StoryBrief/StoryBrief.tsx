@@ -2,6 +2,7 @@ import React, { FC, useState, useMemo } from 'react'
 import type { Story } from '../../types'
 import $ from "./StoryBrief.module.css"
 import { Link } from 'react-router-dom';
+import parse from 'html-react-parser';
 
 interface StoryProps {
     story: Story,
@@ -48,7 +49,9 @@ const StoryBrief: FC<StoryProps> = ({ story, className }) => {
                         </div>
                     </Link>
                 </div>   
-                <div dangerouslySetInnerHTML={{ __html: story.standfirst }} className={$.standfirst} />
+                <div className={$.standfirst}>
+                    {parse(story.standfirst)}
+                </div>
             </article>
         </React.Fragment>
     )
