@@ -1,7 +1,7 @@
 ## Description
 This is accomplished based on React
 
-- 🏃🏻‍♂️ Run `npm install`, `npm build` and then `npm start`
+- 🏃🏻‍♂️ Run `npm install` and then `npm start`
 - 🏃🏻‍♂️ Run `npm test` for testing
 
 ## TECH SETS
