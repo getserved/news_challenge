@@ -1,45 +1,15 @@
-import React from 'react';
-import './App.css';
-import data from "./data/capi.json"
-import StoryBrief from './components/StoryBrief/StoryBrief';
-import { Story } from './types';
+import { Route, Routes, Navigate } from "react-router-dom";
+import NewsPage from "./pages/News"
+import News from "./components/News/News";
 
 function App() {
-
-  const { results } = data
-
-  const transformStories = (stories: any[]) => {
-    return stories.map(story => {
-      const thumbnails = story.related?.thumbnail?.default as string[]
-      let ref;
-      if (thumbnails && thumbnails.length > 0) {
-        const thumbnailId:string = thumbnails[0]
-        ref = story.references[thumbnailId]
-      }
-      console.log(ref?.link?.media)
-      return {
-        id: story.id,
-        headline: story.headline.default,
-        standfirst: story.standfirst.default,
-        date: story.date,
-        thumbnail: ref?.link?.media,
-        link: story.link
-      } as Story
-    })
-  }
-
-  const stories = transformStories(results.slice(30,40))
-
   return (
-    <div className="App">
-      {stories && stories.map(story => {
-        return (
-          <React.Fragment key={story.id}>
-            <StoryBrief story={story}/>
-          </React.Fragment>
-        )
-      })}
-    </div>
+    <Routes>
+      <Route path='/' element={<Navigate replace to="/news/1" />}/>
+      <Route path='/news' element={<NewsPage />}>
+        <Route path=":page" element={<News />} />
+      </Route>
+    </Routes>
   );
 }
 
