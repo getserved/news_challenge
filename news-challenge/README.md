@@ -22,6 +22,7 @@ This is accomplished based on React
 - [✔] Componentise as much as possible
 - [✔] conditional classNames
 - [✔] Typescript supportive
+- [✔] Possible to set Image srcset or images for differenct breakpoints or 'next/image' if needed
 
 ### Api
 - [✔] Fetch local data by axios
