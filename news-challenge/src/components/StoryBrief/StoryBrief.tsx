@@ -36,8 +36,10 @@ const StoryBrief: FC<StoryProps> = ({ story, className }) => {
                 </h3>
                 <div className={$.thumbnail}>
                     <Link className={$.link} to={story.link.canonical} target="_blank">
-                        {imgError && <img className={$.thumbnailImg} alt={story.headline} src={require("../../images/placeholder.jpg")} width="100"/>}
-                        {!imgError && <img className={$.thumbnailImg} alt={story.headline} src={story.thumbnail} onError={handleImageError}/>}
+                        <div className={$.thumbnailImgWrapper}>
+                            {imgError && <img className={$.thumbnailImg} alt={story.headline} src={require("../../images/placeholder.jpg")} width="100"/>}
+                            {!imgError && <img className={$.thumbnailImg} alt={story.headline} src={story.thumbnail} onError={handleImageError}/>}
+                        </div>
                         <div className={$.date}>
                             created at {createdAt}
                         </div>

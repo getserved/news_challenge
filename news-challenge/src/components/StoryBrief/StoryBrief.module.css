@@ -9,19 +9,31 @@
 }
 
 .headline {
+    width: 100%;
     margin: 0;
     grid-area: headline;
 }
 
 .thumbnail {
-    width: 100%;
-    max-width: 160px;
     grid-area: thumbnail;
+    width: 128px;
+}
+
+.thumbnailImgWrapper{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 75%;
 }
 
 .thumbnailImg{
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+    overflow: hidden;
 }
 
 .link {
@@ -48,19 +60,14 @@
 @media screen and (max-width: 640px) {
     .story {
         grid-template-areas:
-            "thumbnail headline"
+            "thumbnail headline";
+        grid-template-columns: 128px auto;
     }
 
     .headline {
         padding: 0 0.5rem;
     }
-
-    .thumbnail {
-        width: 100%;
-        max-width: 160px;
-    }
-
     .standfirst {
-        display: none
+        display: none;
     }
 }
